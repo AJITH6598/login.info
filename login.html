@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+
+        /* *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background-image: url(lock.wall.jpg);
+            background-size: cover;
+           
+        } */
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('lock.wall.jpg') no-repeat center/cover;
+            backdrop-filter: blur(8px);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background-image: url(lock.wall.jpg);
+            background-size: cover;
+        }
+
+        .login-container {
+            width: 350px;
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.85); /* Light background for better readability */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #000; /* Black Text */
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        .input-field {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.7);
+            color: #000; /* Black Text */
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #007BFF;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            visibility: hidden;
+        }
+
+        /* Remember Me & Forgot Password */
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin: 10px 0;
+            color: #000; /* Black Text */
+           
+        }
+
+        .login-options a {
+            color: red;
+            text-decoration: none;
+        }
+
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button Styling */
+        .login-btn{
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: blue;
+            color: #fffcfc;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #080808;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input id="username" class="input-field" type="text" placeholder="Username">
+        <p id="user-error" class="error-message">Please enter a username</p>
+
+        <input id="password" class="input-field" type="password" placeholder="Password">
+        <p id="pass-error" class="error-message">Please enter a valid password</p>
+
+        <div class="login-options">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="forgot-password.html">Forgot password?</a>
+        </div>
+
+        <button class="login-btn" onclick="validateLogin()">LOGIN</button>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const userError = document.getElementById("user-error");
+            const passError = document.getElementById("pass-error");
+            let isValid = true;
+
+            // Username validation
+            if (username.value.trim() === "") {
+                userError.style.visibility = "visible";
+                username.style.borderColor = "red";
+                isValid = false;
+            } else {
+                userError.style.visibility = "hidden";
+                username.style.borderColor = "rgba(0, 0, 0, 0.3)";
+            }
+
+            // Password validation
+            if (password.value.trim() === "") {
+                passError.style.visibility = "visible";
+                password.style.borderColor = "red";
+                isValid = false;
+            } else {
+                passError.style.visibility = "hidden";
+                password.style.borderColor = "rgba(0, 0, 0, 0.3)";
+            }
+
+            // Prevent redirection
+            if (isValid) {
+                alert("Login successful! (No redirection)");
+            }
+        }
+    </script>
+</body>
+</html>
